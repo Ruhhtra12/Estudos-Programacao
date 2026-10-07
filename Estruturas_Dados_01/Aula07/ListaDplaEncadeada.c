@@ -27,6 +27,30 @@ int InserirNoInicio(No **cabeça,int vlr){
     
     
 }
+int InserirNoFIm(No **cabeça,int vlr){
+    No *novo;
+    novo =(No *) malloc(sizeof(No));
+    if (novo == NULL)
+    {
+        return 0;
+    }
+    novo->dado = vlr;
+    novo->prox = NULL;
+    novo->ant = NULL;
+    if (*cabeça == NULL)
+    {
+        *cabeça = novo;
+    }else{
+        No *p;
+        for (p = *cabeça ; p != NULL; p = p->prox);
+        p->prox = novo;
+        novo->ant = p;
+        
+    }
+    return 1;
+    
+    
+}
 
 void mostrar_lista(No **cabeça){
     if (*cabeça == NULL)
@@ -64,12 +88,105 @@ int VerificarIntegridade(No **cabeça){
     
 }
 
+int RemoverNoInicio(No *cabeça){
+    if (cabeça != NULL){
+        cabeça = cabeça->prox;
+        cabeça->ant = NULL;
+        return 1;
+    }
+    return 0;
+}
+    
+
+int menu(){
+    printf("MENU - OPÇÔES\n");
+    printf("Selecione a opção que deseja:\n");
+    printf("[0] - Sair\n");
+    printf("[1] - Inserir no Início\n");
+    printf("[2] - Mostrar lista\n");
+    printf("[3] - Verificar a integridade da lista\n");
+    printf("[4] - Adicionar no fim\n");
+    printf("[5] - Adicionar no fim\n");
+    printf("Escolha uma opção : ");
+
+    int input;
+    scanf("%i",&input);
+
+    return input;
+}
+
 int main()
 {
     No *cabeça = NULL;
-    InserirNoInicio(&cabeça,10);
-    InserirNoInicio(&cabeça,20);
-    InserirNoInicio(&cabeça,30);
+    int input;
+    while (1)
+    {
+        input = menu();
+        switch (input)
+        {
+        case 0:
+            return 0;
+            break;
+        case 1:
+            printf("Selecionado: Adicionar no Inicio\n");
+            printf("Digite o valor: ");
+            scanf("%i",&input);
+            if (InserirNoInicio(&cabeça,input))
+            {
+                printf("%i - Adicionado\n",input);
+            }else
+            {
+               
+               printf("A operação não ocorreu - ALGO DEU ERRADO\n");
+            }
+            
+            break;
+        
+        case 2:
+            printf("Selecionado: Mostrar lista\n");
+            mostrar_lista(&cabeça);
+        break;
+        case 3:
+            printf("Selecionado: Verificar integridade\n");
+            VerificarIntegridade(&cabeça);
+        break;
+            
+        case 4:
+            printf("Selecionado: Adicionar no Fim\n");
+                printf("Digite o valor: ");
+                scanf("%i",&input);
+                if (InserirNoFIm(&cabeça,input))
+                {
+                    printf("%i - Adicionado\n",input);
+                }else
+                {
+                
+                printf("A operação não ocorreu - ALGO DEU ERRADO\n");
+                }
+            
+                
+                break;
+                case 5:
+                printf("Remover no inicio\n");
+                if (RemoverNoInicio(cabeça))
+                {
+                    printf("%i - Removido no inicio\n",input);
+                }else
+                {
+                
+                printf("A operação não ocorreu - ALGO DEU ERRADO\n");
+                }
+                break;
+        
+        default:
+            break;
+        }
+        getchar();
+        getchar();
+        system("clear");
+        menu();
+    }
+    
 
     mostrar_lista(&cabeça);
 
