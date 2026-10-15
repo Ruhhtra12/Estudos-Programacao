@@ -14,15 +14,39 @@ function CalcTurma(Array,Turma){
         if(Elemento.Turma == Turma){
             Soma = Soma + Number(Elemento.Nota)
             Qntd++
-        }
-        if(Elemento.Nota > Maior ){
-            Maior = Elemento.Nota
-                
-
+            if(Elemento.Nota > Maior ){
+                Maior = Elemento.Nota
+            }
         }
    });
    Media = Soma / Qntd
-   return Media
+   return {
+    Maior: Maior,
+    Media: Media,
+    Qntd: Qntd
+   }
+}
+function ImprimirTurmas(Array){
+    let Turmas = []
+    Array.forEach(Elemento => {
+    if(!Turmas.includes(Elemento.Turma)){
+        Turmas.push(Elemento.Turma)
+                                        }
+    
+                                }
+                    )
+    Turmas.forEach(Turma => {
+    console.log("---------------------------------------------")
+    console.log(`Turma: ${Turma}`)
+        let Saidas = CalcTurma(Array,Turma)
+        console.log(`Qntd de notas: ${Saidas.Qntd}`)
+        console.log(`maior nota: ${Saidas.Maior}`)
+        console.log(`media de notas: ${Saidas.Media}`)
+        console.log("---------------------------------------------\n")
+        
+        }
+    )
+
 }
 
 
@@ -40,9 +64,9 @@ for(let i = 0; Nome != "" ;i++)
     Boletim.push({
         Nome: Nome,
         Turma: Turma,
-        Nota: Nota
+        Nota: Number(Nota)
     })
 }
 
-console.log(Boletim)
+ImprimirTurmas(Boletim)
 rl.close()    
