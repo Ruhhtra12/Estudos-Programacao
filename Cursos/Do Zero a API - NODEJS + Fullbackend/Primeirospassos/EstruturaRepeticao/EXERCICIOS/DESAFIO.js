@@ -24,7 +24,7 @@ for(let i = 0; i <= QntdOperacoes;i++){
     let Fatorial = 1
     for(let j = 1 ; j <= Opr; j = j + 1){
         Fatorial *= j
-    }
+    }   
 
    let Operacao = Emcima / Fatorial
 
