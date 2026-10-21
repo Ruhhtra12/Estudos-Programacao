@@ -1,20 +1,26 @@
 const Express = require("express")
+const {
+    APISomar,
+    APISubtrair,
+    APIMultiplicar,
+    APIDividir } 
+    = require("./API/Operacoes")
 
 const App = Express()
 App.use(Express.json())
 
 const Porta = 9090
 
-function Somar(Num1,Num2) {
-     const soma = Number(Num1) + Number(Num2)
-     return soma
-}
-
-App.get('/API/',(Request,Response) =>{
-    const { Input1 , Input2 } = Request.query
-    const Result = Somar(Input1,Input2)
-    Response.status(200).send({"Result":Result})
+App.post('/API/POST/SOMAR',(Request,Response) =>{APISomar(Request,Response)
 })
+App.post('/API/POST/SUBTRAIR',(Request,Response) =>{APISubtrair(Request,Response)
+})
+App.post('/API/POST/MULTIPLICAR',(Request,Response) =>{APIMultiplicar(Request,Response)
+})
+App.post('/API/POST/DIVIDIR',(Request,Response) =>{APIDividir(Request,Response)
+})
+
+
 
 App.listen( Porta,()=>{
     console.log("Server is running on: "+ Porta)
