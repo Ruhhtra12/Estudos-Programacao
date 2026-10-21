@@ -1,26 +1,21 @@
-const Express = require('express')
-const app = Express()
+const Express = require("express")
 
-const Porta = 3000
+const App = Express()
+App.use(Express.json())
 
-app.use(Express.json())
+const Porta = 9090
 
-app.get('/api/Soma',(req,res) => {
-    
-    const {Num1,Num2} = req.body
-    res.send(Num1 + " " + Num2)
+function Somar(Num1,Num2) {
+     const soma = Number(Num1) + Number(Num2)
+     return soma
+}
 
-})
-app.post('/api/Editar',(req,res) => {
-
-    const {Num1,Num2} = req.body
-    res.status(200).send({
-        "Result":(Num1 + Num2)
-    })
-    console.log(req.body)
-
+App.get('/API/',(Request,Response) =>{
+    const { Input1 , Input2 } = Request.query
+    const Result = Somar(Input1,Input2)
+    Response.status(200).send({"Result":Result})
 })
 
-app.listen(Porta, ()=> {    
-    console.log(`Servidor rodando na porta: ${Porta}`)
+App.listen( Porta,()=>{
+    console.log("Server is running on: "+ Porta)
 })
