@@ -1,8 +1,10 @@
-let BancoDeDados = new Array("Arthur","Vitoria","Alexandre","Adivania")
+const RepositoryImport = require("../Repository/Pessoa")
+
+const Repository = new RepositoryImport
 
 class Services {
     PegarTodos(){
-        const Banco = BancoDeDados
+        const Banco = Repository.RetornarBanco()
         if(Banco.length == 0){
             throw new Error("Não há nenhum registro no banco")
         }
@@ -10,7 +12,7 @@ class Services {
     }
 
     PegarUm(index){
-        const Banco = BancoDeDados
+        const Banco = Repository.RetornarBanco()
         if(Banco.length == 0){
             throw new Error("Não há nenhum registro no banco")
         }
@@ -21,14 +23,14 @@ class Services {
     }
     
     AdicionarElemento(Elemento){
-        BancoDeDados.push(Elemento)
+        Repository.AdcionarElemento(Elemento)
     }
     DeletarElemento(Elemento){
-        const Index = BancoDeDados.indexOf(Elemento)
+        const Index = Repository.PegarIndex(Elemento)
         if(Index == -1){
             throw new Error("Não existe esse valor")
         }
-        BancoDeDados.splice(Index,1)
+        Repository.DeletarElemento(Index)
     }
 }
 
