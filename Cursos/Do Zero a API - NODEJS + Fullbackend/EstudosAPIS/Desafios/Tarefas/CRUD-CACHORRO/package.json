@@ -1,0 +1,16 @@
+{
+  "name": "crud-cachorro",
+  "version": "1.0.0",
+  "description": "Minha vez de fazer um \"CRUD\", porém agora com cachorros. Seguindo MVC E etc",
+  "license": "ISC",
+  "author": "Arthur Castro",
+  "type": "commonjs",
+  "main": "Index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "jest": "^30.5.2"
+  }
+}
