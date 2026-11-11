@@ -12,7 +12,7 @@ class controller{
     }
     PegarUm(req,res){try{
         const id = req.params.id
-        Result = service.GetDogById(id)
+        const Result = service.GetDogById(id)
         res.status(200).send({"Result": Result})}
         catch(error){
             console.error(Error)
@@ -23,8 +23,8 @@ class controller{
         const id = req.body.id
         const name = req.body.name
         const age = req.body.age
-        Result = service.AddDog(id, name, age)
-        res.status(200).send({"Result": Result})}
+        service.AddDog(id, name, age)
+        res.status(200).send({"Result": "Adicionado com sucesso"})}
         catch(error){
             console.error(Error)
             res.status(500).send({"Error": Error.message})

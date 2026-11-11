@@ -2,9 +2,17 @@ const repositoryimport = require('../Repository/Dogs.js')
 
 const repository = new repositoryimport
 class service{
-    GetAllDogs(){return repository.GetAllDogs()}
-    GetDogById(id){return repository.GetDogById(id)}
+    GetAllDogs(){
+        const data = repository.GetAllDogs()
+        console.log(data)
+        if(data.length ===  0)throw new Error("Não há mais conteúdo")
+        return data }
+    GetDogById(id){
+        const data = repository.GetDogById(id)
+        if(data.length ===  0)throw new Error("Não há conteudo com esse id");
+        return data}
     AddDog(id, name, age){
+        repository.AddDog(id,name,age)
         if(!id || !name || !age) {throw new Error("Faltam os campos obrigatórios: id, name e age")}
         repository.AddDog(id, name, age)}
     UpdateDog(id, name, age){
