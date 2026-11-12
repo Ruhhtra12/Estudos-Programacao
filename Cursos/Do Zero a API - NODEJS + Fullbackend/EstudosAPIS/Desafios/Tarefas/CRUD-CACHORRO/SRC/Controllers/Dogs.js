@@ -37,7 +37,7 @@ class controller{
         service.UpdateDog(id, name, age)
         res.status(200).send({"Result": "Dog updated successfully"})}
         catch(error){
-            console.error(Error)
+            console.error(error)
             res.status(500).send({"Error": Error.message})
         }
     }

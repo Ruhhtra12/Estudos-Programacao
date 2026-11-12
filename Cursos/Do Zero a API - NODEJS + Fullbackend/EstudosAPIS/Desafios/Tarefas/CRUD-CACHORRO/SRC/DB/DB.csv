@@ -1,5 +1,5 @@
-id;idade;name
-01;5;Belinha
+id;age;name
+01;10;Alouuiu
 02;3;princesa
 03;2;Rex
 04;4;Bob
@@ -10,15 +10,13 @@ id;idade;name
 09;3;Mel
 10;2;Amora
 11;5;Cacau
-12;4;Toddy
-13;1;Simba
 14;9;Luke
 15;3;Marley
 16;2;Chico
 17;6;Zeus
 18;7;Nick
 19;4;Bidu
-20;5;Scooby
+20;01;Ronildo 
 21;1;Pingo
 22;3;Toby
 23;8;Fred
@@ -49,4 +47,3 @@ id;idade;name
 48;3;Fiona
 49;7;Frida
 50;2;Kiara
-0120;10;Josefina
